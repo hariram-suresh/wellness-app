@@ -36,5 +36,3 @@ def analyze(data: UserInput):
     )
 
     return response.json()
-
-nisbefonfnowebg0nw
