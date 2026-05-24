@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+
+venv/
+.env
+
+node_modules/
+
+grafana_data/
+prometheus_data/
+
+dist/
+build/
+
+frontend/frontend/node_modules/
+
+*.sqlite3

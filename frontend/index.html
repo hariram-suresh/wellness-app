@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        Teen Mental Wellness Analyzer
+    </title>
+
+    <link rel="stylesheet"
+        href="style.css" />
+
+</head>
+
+<body>
+
+    <div class="background-overlay">
+
+        <div class="container">
+
+            <div class="badge">
+                AI + Kubernetes + DevOps
+            </div>
+
+            <h1>
+                Teen Mental Wellness Analyzer
+            </h1>
+
+            <p class="subtitle">
+
+                AI-powered emotional sentiment analysis platform
+                built using FastAPI, Docker, Kubernetes,
+                Prometheus and Grafana.
+
+            </p>
+
+            <div class="card">
+
+                <label>
+                    Describe how you're feeling today
+                </label>
+
+                <textarea
+                    id="textInput"
+                    placeholder="Example: I feel exhausted from studies and anxious about my future..."></textarea>
+
+                <div class="button-row">
+
+                    <button
+                        class="analyze-btn"
+                        onclick="analyzeText()">
+
+                        Analyze Mental State
+
+                    </button>
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearText()">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+                <div
+                    class="loading"
+                    id="loading">
+
+                    <div class="spinner"></div>
+
+                    <p>
+                        Analyzing emotional sentiment...
+                    </p>
+
+                </div>
+
+                <div
+                    class="result-card"
+                    id="resultCard">
+
+                    <div class="result-header">
+
+                        <h2>
+                            Analysis Result
+                        </h2>
+
+                        <span>
+                            Completed
+                        </span>
+
+                    </div>
+
+                    <div class="emotion-box">
+
+                        <div class="emotion-label">
+                            Detected Emotional State
+                        </div>
+
+                        <div
+                            class="emotion-value"
+                            id="emotionResult">
+
+                            --
+
+                        </div>
+
+                        <div
+                            class="confidence"
+                            id="confidenceResult">
+
+                            Confidence: --
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="footer">
+
+                Built using FastAPI microservices,
+                HuggingFace Transformers,
+                Docker containerization,
+                Kubernetes orchestration,
+                Prometheus monitoring and Grafana visualization.
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
