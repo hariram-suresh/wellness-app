@@ -1,10 +1,12 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import requests
-
+from prometheus_fastapi_instrumentator import Instrumentator
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+Instrumentator().instrument(app).expose(app)
 
 app.add_middleware(
     CORSMiddleware,

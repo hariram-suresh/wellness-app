@@ -21,47 +21,52 @@ async function analyzeText() {
     resultCard.style.display = "none";
 
     try {
+        const endpoints = [
+            "http://localhost:8081/analyze",
+            "http://localhost:8080/analyze",
+            "http://localhost:8000/analyze"
+        ];
 
-        const response = await fetch(
-            "http://localhost:8000/analyze",
-            {
-                method: "POST",
+        let data = null;
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+        for (const url of endpoints) {
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ text })
+                });
 
-                body: JSON.stringify({ text })
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                data = await response.json();
+                break;
             }
-        );
+            catch (error) {
+                console.warn(`Backend request failed at ${url}:`, error);
+            }
+        }
 
-        const data = await response.json();
+        if (!data) {
+            throw new Error("Unable to reach backend on localhost:8080 or localhost:8000");
+        }
 
         loading.style.display = "none";
-
         resultCard.style.display = "block";
 
-        const prediction =
-            data.prediction[0];
+        const prediction = data.prediction[0];
 
-        document.getElementById("emotionResult")
-            .innerText =
-            prediction.label.toUpperCase();
-
-        document.getElementById("confidenceResult")
-            .innerText =
-            "Confidence Score: "
-            + (prediction.score * 100).toFixed(2)
-            + "%";
-
+        document.getElementById("emotionResult").innerText = prediction.label.toUpperCase();
+        document.getElementById("confidenceResult").innerText =
+            "Confidence Score: " + (prediction.score * 100).toFixed(2) + "%";
     }
-
     catch (error) {
-
         loading.style.display = "none";
-
         alert("Backend connection failed.");
-
         console.error(error);
     }
 }

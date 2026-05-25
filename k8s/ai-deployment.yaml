@@ -19,9 +19,7 @@ spec:
     spec:
       containers:
         - name: ai-service
-          image: wellness-app-backend:v3
-
+          image: wellness-app-ai:k8sfinal1
           imagePullPolicy: IfNotPresent
-
           ports:
             - containerPort: 8001

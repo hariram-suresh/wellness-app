@@ -19,8 +19,8 @@ spec:
     spec:
       containers:
         - name: backend
-          image: wellness-app-backend:corsfix
+          image: wellness-app-backend:k8sfinal2
           imagePullPolicy: IfNotPresent
-
           ports:
             - containerPort: 8000
+          
